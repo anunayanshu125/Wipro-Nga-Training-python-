@@ -1,5 +1,5 @@
 numbers=[10,20,30,40]
-names=["Ram","Hari","Ramya"]
+names=["Ram","Shyam","krishna"]
 mixed=[1,"python",3,5,True]
 
 numbers[1]=100
@@ -22,13 +22,13 @@ print(names.reverse())
 
 names.reverse()
 print(names)
-names.append("Harika")
+names.append("Anunay")
 print(names)
 
-names.extend(["lakshmi","Mounika"])
+names.extend(["Kumari","Anshal"])
 print(names)
 
-names.remove("Harika")
+names.remove("Anunay")
 print(names)
 
 names.insert(3,"Anu")
