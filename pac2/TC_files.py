@@ -1,0 +1,15 @@
+file=open("f1.txt","r")
+content=file.readline()
+print(content)
+content=file.readlines()
+print(content)
+file.close()
+
+file=open("f1.txt","a")
+file.write("\nhello world")
+file.close()
+
+file=open("f2.txt","r+")
+file.write("hello world")
+file.write("\nThis is a new file")
+file.close()
