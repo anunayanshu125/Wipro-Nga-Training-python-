@@ -1,0 +1,15 @@
+1769751506823	geckodriver	INFO	Listening on 127.0.0.1:53988
+1769751509952	mozrunner::runner	INFO	Running command: "C:\\Users\\KIIT\\.cache\\selenium\\firefox\\win64\\147.0.2\\firefox.exe" "--marionette" "--remote-debugging ... 89" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\KIIT\\AppData\\Local\\Temp\\rust_mozprofileQjEGb4"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1769751510624	Marionette	INFO	Marionette enabled
+1769751510850	Marionette	INFO	Listening on port 54001
+Read port: 54001
+WebDriver BiDi listening on ws://127.0.0.1:53989
+1769751510988	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://opensource-demo.orangehrmlive.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://opensource-demo.orangehrmlive.com."
+1769751531908	Marionette	INFO	Stopped listening on port 54001
+Dynamically enable window occlusion 1
+console.warn: TopSitesFeed: Failed to fetch data from MARS server: NetworkError when attempting to fetch resource.
