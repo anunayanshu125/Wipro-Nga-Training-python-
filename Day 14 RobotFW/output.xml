@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.13.3 on win32)" generated="2026-02-02T20:50:01.237563" rpa="false" schemaversion="5">
+<suite id="s1" name="TC009 Flaskapi" source="C:\Users\KIIT\PycharmProjects\Wipro-Nga-Training-python-\Day 14 RobotFW\TC009_Flaskapi.robot">
+<test id="s1-t1" name="Create new user" line="7">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.655503" level="INFO">Creating Session using : alias=postingsession, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>postingsession</arg>
+<arg>${baseurl}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-02T20:50:01.654953" elapsed="0.001531"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-02T20:50:01.658873" level="INFO">${data} = {'name': 'varsha'}</msg>
+<var>${data}</var>
+<arg>name=varsha</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.657957" elapsed="0.000990"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.672975" level="INFO">POST Request : url=http://127.0.0.1:5000/users 
+ path_url=/users 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '18', 'Content-Type': 'application/json'} 
+ body=b'{"name": "varsha"}' 
+ </msg>
+<msg time="2026-02-02T20:50:01.673180" level="INFO">POST Response : url=http://127.0.0.1:5000/users 
+ status=201, reason=CREATED 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.13.3', 'Date': 'Mon, 02 Feb 2026 15:20:01 GMT', 'Content-Type': 'application/json', 'Content-Length': '34', 'Connection': 'close'} 
+ body={
+  "id": 3,
+  "name": "varsha"
+}
+ 
+ </msg>
+<msg time="2026-02-02T20:50:01.673403" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>postingsession</arg>
+<arg>/users</arg>
+<arg>json=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.659813" elapsed="0.013640"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.674005" elapsed="0.000476"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-02-02T20:50:01.676904" level="INFO">${user_json} = {'id': 3, 'name': 'varsha'}</msg>
+<var>${user_json}</var>
+<arg>$response.json()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.675340" elapsed="0.001648"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-02T20:50:01.679455" level="INFO">{'id': 3, 'name': 'varsha'}=</msg>
+<arg>${user_json}=</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.678357" elapsed="0.001631"/>
+</kw>
+<status status="PASS" start="2026-02-02T20:50:01.652624" elapsed="0.028053"/>
+</test>
+<test id="s1-t2" name="update user" line="14">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.682645" level="INFO">Creating Session using : alias=postingsession, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>postingsession</arg>
+<arg>${baseurl}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-02T20:50:01.682305" elapsed="0.000616"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-02T20:50:01.684027" level="INFO">${data} = {'name': 'Pooja'}</msg>
+<var>${data}</var>
+<arg>name=Pooja</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.683341" elapsed="0.000803"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.693543" level="INFO">PUT Request : url=http://127.0.0.1:5000/users/1 
+ path_url=/users/1 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '17', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Pooja"}' 
+ </msg>
+<msg time="2026-02-02T20:50:01.693684" level="INFO">PUT Response : url=http://127.0.0.1:5000/users/1 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.13.3', 'Date': 'Mon, 02 Feb 2026 15:20:01 GMT', 'Content-Type': 'application/json', 'Content-Length': '33', 'Connection': 'close'} 
+ body={
+  "id": 1,
+  "name": "Pooja"
+}
+ 
+ </msg>
+<msg time="2026-02-02T20:50:01.693922" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>postingsession</arg>
+<arg>/users/1</arg>
+<arg>json=${data}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.684640" elapsed="0.009342"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.694483" elapsed="0.000530"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-02-02T20:50:01.696895" level="INFO">${user_json} = {'id': 1, 'name': 'Pooja'}</msg>
+<var>${user_json}</var>
+<arg>$response.json()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.695465" elapsed="0.001505"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-02T20:50:01.698546" level="INFO">{'id': 1, 'name': 'Pooja'}=</msg>
+<arg>${user_json}=</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.697505" elapsed="0.001380"/>
+</kw>
+<status status="PASS" start="2026-02-02T20:50:01.681461" elapsed="0.017921"/>
+</test>
+<test id="s1-t3" name="patch user" line="22">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.702164" level="INFO">Creating Session using : alias=postingsession, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>postingsession</arg>
+<arg>${baseurl}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-02T20:50:01.701642" elapsed="0.001321"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-02T20:50:01.704545" level="INFO">${data} = {'name': 'Pooja patched'}</msg>
+<var>${data}</var>
+<arg>name=Pooja patched</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.703670" elapsed="0.000963"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.711507" level="INFO">PUT Request : url=http://127.0.0.1:5000/users/1 
+ path_url=/users/1 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '25', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Pooja patched"}' 
+ </msg>
+<msg time="2026-02-02T20:50:01.711699" level="INFO">PUT Response : url=http://127.0.0.1:5000/users/1 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.13.3', 'Date': 'Mon, 02 Feb 2026 15:20:01 GMT', 'Content-Type': 'application/json', 'Content-Length': '41', 'Connection': 'close'} 
+ body={
+  "id": 1,
+  "name": "Pooja patched"
+}
+ 
+ </msg>
+<msg time="2026-02-02T20:50:01.711963" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>postingsession</arg>
+<arg>/users/1</arg>
+<arg>json=${data}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.705201" elapsed="0.006835"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.713004" elapsed="0.000537"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-02-02T20:50:01.715662" level="INFO">${user_json} = {'id': 1, 'name': 'Pooja patched'}</msg>
+<var>${user_json}</var>
+<arg>$response.json()</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.714482" elapsed="0.001256"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-02T20:50:01.717904" level="INFO">{'id': 1, 'name': 'Pooja patched'}=</msg>
+<arg>${user_json}=</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.716581" elapsed="0.001726"/>
+</kw>
+<status status="PASS" start="2026-02-02T20:50:01.700432" elapsed="0.018393"/>
+</test>
+<test id="s1-t4" name="Verify Get All Users" line="30">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.720749" level="INFO">Creating Session using : alias=mysession, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${baseurl}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-02T20:50:01.720448" elapsed="0.000737"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.727464" level="INFO">GET Request : url=http://127.0.0.1:5000/users 
+ path_url=/users 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-02T20:50:01.727593" level="INFO">GET Response : url=http://127.0.0.1:5000/users 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.13.3', 'Date': 'Mon, 02 Feb 2026 15:20:01 GMT', 'Content-Type': 'application/json', 'Content-Length': '137', 'Connection': 'close'} 
+ body=[
+  {
+    "id": 1,
+    "name": "Pooja patched"
+  },
+  {
+    "id": 2,
+    "name": "Rama"
+  },
+  {
+    "id": 3,
+    "name": "varsha"
+  }
+]
+ 
+ </msg>
+<msg time="2026-02-02T20:50:01.727821" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/users</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.721668" elapsed="0.006225"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.728555" elapsed="0.000405"/>
+</kw>
+<kw name="To Json" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.729809" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2026-02-02T20:50:01.732330" level="INFO">To JSON using : content=[
+  {
+    "id": 1,
+    "name": "Pooja patched"
+  },
+  {
+    "id": 2,
+    "name": "Rama"
+  },
+  {
+    "id": 3,
+    "name": "varsha"
+  }
+]
+ </msg>
+<msg time="2026-02-02T20:50:01.732439" level="INFO">To JSON using : pretty_print=False </msg>
+<msg time="2026-02-02T20:50:01.732682" level="INFO">${res_jon} = [{'id': 1, 'name': 'Pooja patched'}, {'id': 2, 'name': 'Rama'}, {'id': 3, 'name': 'varsha'}]</msg>
+<var>${res_jon}</var>
+<arg>${response.content}</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.729670" elapsed="0.003142"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-02T20:50:01.734698" level="INFO">[{'id': 1, 'name': 'Pooja patched'}, {'id': 2, 'name': 'Rama'}, {'id': 3, 'name': 'varsha'}]=</msg>
+<arg>${res_jon}=</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-02T20:50:01.733477" elapsed="0.001571"/>
+</kw>
+<status status="PASS" start="2026-02-02T20:50:01.719728" elapsed="0.015971"/>
+</test>
+<test id="s1-t5" name="Verify Get Single user" line="37">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.738294" level="INFO">Creating Session using : alias=mysession, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${baseurl}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-02T20:50:01.737882" elapsed="0.000732"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.745282" level="INFO">GET Request : url=http://127.0.0.1:5000/users/3 
+ path_url=/users/3 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-02T20:50:01.745411" level="INFO">GET Response : url=http://127.0.0.1:5000/users/3 
+ status=405, reason=METHOD NOT ALLOWED 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.13.3', 'Date': 'Mon, 02 Feb 2026 15:20:01 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Allow': 'PATCH, DELETE, PUT, OPTIONS', 'Content-Length': '153', 'Connection': 'close'} 
+ body=&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The method is not allowed for the requested URL.&lt;/p&gt;
+ 
+ </msg>
+<msg time="2026-02-02T20:50:01.745710" level="FAIL">HTTPError: 405 Client Error: METHOD NOT ALLOWED for url: http://127.0.0.1:5000/users/3</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/users/3</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2026-02-02T20:50:01.739317" elapsed="0.014678">HTTPError: 405 Client Error: METHOD NOT ALLOWED for url: http://127.0.0.1:5000/users/3</status>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" start="2026-02-02T20:50:01.754843" elapsed="0.000108"/>
+</kw>
+<kw name="To Json" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.755917" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<var>${res_jon}</var>
+<arg>${response.content}</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<status status="NOT RUN" start="2026-02-02T20:50:01.755805" elapsed="0.000841"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${res_jon}=</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-02-02T20:50:01.757385" elapsed="0.000108"/>
+</kw>
+<status status="FAIL" start="2026-02-02T20:50:01.736850" elapsed="0.021519">HTTPError: 405 Client Error: METHOD NOT ALLOWED for url: http://127.0.0.1:5000/users/3</status>
+</test>
+<test id="s1-t6" name="Verify Get Single user not gound" line="43">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.761050" level="INFO">Creating Session using : alias=mysession, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${baseurl}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-02T20:50:01.760581" elapsed="0.000821"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.769745" level="INFO">GET Request : url=http://127.0.0.1:5000/users/99999 
+ path_url=/users/99999 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-02T20:50:01.770045" level="INFO">GET Response : url=http://127.0.0.1:5000/users/99999 
+ status=405, reason=METHOD NOT ALLOWED 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.13.3', 'Date': 'Mon, 02 Feb 2026 15:20:01 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Allow': 'PATCH, DELETE, PUT, OPTIONS', 'Content-Length': '153', 'Connection': 'close'} 
+ body=&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The method is not allowed for the requested URL.&lt;/p&gt;
+ 
+ </msg>
+<msg time="2026-02-02T20:50:01.770389" level="FAIL">HTTPError: 405 Client Error: METHOD NOT ALLOWED for url: http://127.0.0.1:5000/users/99999</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/users/99999</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2026-02-02T20:50:01.762254" elapsed="0.009851">HTTPError: 405 Client Error: METHOD NOT ALLOWED for url: http://127.0.0.1:5000/users/99999</status>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>404</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" start="2026-02-02T20:50:01.772673" elapsed="0.000057"/>
+</kw>
+<kw name="To Json" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.773370" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<var>${res_jon}</var>
+<arg>${response.content}</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<status status="NOT RUN" start="2026-02-02T20:50:01.773286" elapsed="0.001378"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${res_jon}=</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-02-02T20:50:01.775469" elapsed="0.000087"/>
+</kw>
+<status status="FAIL" start="2026-02-02T20:50:01.759712" elapsed="0.016842">HTTPError: 405 Client Error: METHOD NOT ALLOWED for url: http://127.0.0.1:5000/users/99999</status>
+</test>
+<test id="s1-t7" name="Verify Delete user by userid" line="50">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.779455" level="INFO">Creating Session using : alias=mysession, url=http://127.0.0.1:5000, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mysession</arg>
+<arg>${baseurl}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-02T20:50:01.778989" elapsed="0.000861"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.785845" level="INFO">GET Request : url=http://127.0.0.1:5000/users/1 
+ path_url=/users/1 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-02T20:50:01.786004" level="INFO">GET Response : url=http://127.0.0.1:5000/users/1 
+ status=405, reason=METHOD NOT ALLOWED 
+ headers={'Server': 'Werkzeug/3.1.5 Python/3.13.3', 'Date': 'Mon, 02 Feb 2026 15:20:01 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Allow': 'PATCH, DELETE, PUT, OPTIONS', 'Content-Length': '153', 'Connection': 'close'} 
+ body=&lt;!doctype html&gt;
+&lt;html lang=en&gt;
+&lt;title&gt;405 Method Not Allowed&lt;/title&gt;
+&lt;h1&gt;Method Not Allowed&lt;/h1&gt;
+&lt;p&gt;The method is not allowed for the requested URL.&lt;/p&gt;
+ 
+ </msg>
+<msg time="2026-02-02T20:50:01.786308" level="FAIL">HTTPError: 405 Client Error: METHOD NOT ALLOWED for url: http://127.0.0.1:5000/users/1</msg>
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/users/1</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2026-02-02T20:50:01.780488" elapsed="0.007731">HTTPError: 405 Client Error: METHOD NOT ALLOWED for url: http://127.0.0.1:5000/users/1</status>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" start="2026-02-02T20:50:01.788908" elapsed="0.000072"/>
+</kw>
+<kw name="To Json" owner="RequestsLibrary">
+<msg time="2026-02-02T20:50:01.789514" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<var>${res_jon}</var>
+<arg>${response.content}</arg>
+<doc>*DEPRECATED* Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</doc>
+<status status="NOT RUN" start="2026-02-02T20:50:01.789454" elapsed="0.000489"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${res_jon}=</arg>
+<arg>console=True</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-02-02T20:50:01.790440" elapsed="0.000083"/>
+</kw>
+<status status="FAIL" start="2026-02-02T20:50:01.777777" elapsed="0.013284">HTTPError: 405 Client Error: METHOD NOT ALLOWED for url: http://127.0.0.1:5000/users/1</status>
+</test>
+<status status="FAIL" start="2026-02-02T20:50:01.242837" elapsed="0.550250"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="TC009 Flaskapi" id="s1" pass="4" fail="3" skip="0">TC009 Flaskapi</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-02-02T20:50:01.729809" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2026-02-02T20:50:01.755917" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2026-02-02T20:50:01.773370" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+<msg time="2026-02-02T20:50:01.789514" level="WARN">Keyword 'RequestsLibrary.To Json' is deprecated. Please use ${resp.json()} instead. Have a look at the improved HTML output as pretty printing replacement.</msg>
+</errors>
+</robot>
